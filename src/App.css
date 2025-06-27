@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000 0%, #1a0033 50%, #2d0047 100%);
+  font-family: 'Arial', sans-serif;
+  color: white;
 }
 
 .App-logo {
@@ -34,5 +38,56 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.countdown-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.countdown-section h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+.launch-date {
+  font-size: 1rem;
+  margin-top: 15px;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .countdown-section h1 {
+    font-size: 1.5rem;
+  }
+  
+  .launch-date {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-section h1 {
+    font-size: 1.2rem;
+  }
+  
+  .launch-date {
+    font-size: 0.8rem;
   }
 }
