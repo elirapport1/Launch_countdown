@@ -11,10 +11,36 @@
 
 .flip-clock-container {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.3vw;
   max-width: 100%;
   flex-wrap: nowrap;
+}
+
+.time-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8vw;
+}
+
+.digit-group {
+  display: flex;
+  gap: 0.1vw;
+}
+
+.time-label {
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: #ccc;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1vw;
+  text-shadow: 0.1vw 0.1vw 0.2vw rgba(0, 0, 0, 0.3);
+  min-height: 1.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .flip-digit {
@@ -188,6 +214,8 @@
   color: #333;
   margin: 0;
   text-shadow: 0.1vw 0.1vw 0.2vw rgba(0, 0, 0, 0.1);
+  align-self: flex-end;
+  margin-bottom: 1.5vw;
 }
 
 /* Responsive design for smaller screens */
@@ -208,6 +236,14 @@
   .flip-clock-container {
     gap: 0.5vw;
   }
+  
+  .time-label {
+    font-size: 1.5vw;
+  }
+  
+  .time-group {
+    gap: 1vw;
+  }
 }
 
 @media (max-width: 768px) {
@@ -227,6 +263,14 @@
   .flip-clock-container {
     gap: 0.8vw;
   }
+  
+  .time-label {
+    font-size: 1.8vw;
+  }
+  
+  .time-group {
+    gap: 1.2vw;
+  }
 }
 
 @media (max-width: 480px) {
@@ -245,5 +289,13 @@
   
   .flip-clock-container {
     gap: 1vw;
+  }
+  
+  .time-label {
+    font-size: 2.2vw;
+  }
+  
+  .time-group {
+    gap: 1.5vw;
   }
 } 

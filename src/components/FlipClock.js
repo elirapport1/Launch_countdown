@@ -66,26 +66,46 @@ const FlipClock = ({ timeLeft, previousTimeLeft }) => {
     <div className="flip-clock">
       <div className="flip-clock-container">
         {/* Days - 2 digits */}
-        <FlipDigit value={formatNumber(timeLeft.days)[0]} previousValue={formatNumber(previousTimeLeft.days)[0]} />
-        <FlipDigit value={formatNumber(timeLeft.days)[1]} previousValue={formatNumber(previousTimeLeft.days)[1]} />
+        <div className="time-group">
+          <div className="digit-group">
+            <FlipDigit value={formatNumber(timeLeft.days)[0]} previousValue={formatNumber(previousTimeLeft.days)[0]} />
+            <FlipDigit value={formatNumber(timeLeft.days)[1]} previousValue={formatNumber(previousTimeLeft.days)[1]} />
+          </div>
+          <div className="time-label">DAYS</div>
+        </div>
         
         <div className="separator">:</div>
         
         {/* Hours */}
-        <FlipDigit value={formatNumber(timeLeft.hours)[0]} previousValue={formatNumber(previousTimeLeft.hours)[0]} />
-        <FlipDigit value={formatNumber(timeLeft.hours)[1]} previousValue={formatNumber(previousTimeLeft.hours)[1]} />
+        <div className="time-group">
+          <div className="digit-group">
+            <FlipDigit value={formatNumber(timeLeft.hours)[0]} previousValue={formatNumber(previousTimeLeft.hours)[0]} />
+            <FlipDigit value={formatNumber(timeLeft.hours)[1]} previousValue={formatNumber(previousTimeLeft.hours)[1]} />
+          </div>
+          <div className="time-label">HOURS</div>
+        </div>
         
         <div className="separator">:</div>
         
         {/* Minutes */}
-        <FlipDigit value={formatNumber(timeLeft.minutes)[0]} previousValue={formatNumber(previousTimeLeft.minutes)[0]} />
-        <FlipDigit value={formatNumber(timeLeft.minutes)[1]} previousValue={formatNumber(previousTimeLeft.minutes)[1]} />
+        <div className="time-group">
+          <div className="digit-group">
+            <FlipDigit value={formatNumber(timeLeft.minutes)[0]} previousValue={formatNumber(previousTimeLeft.minutes)[0]} />
+            <FlipDigit value={formatNumber(timeLeft.minutes)[1]} previousValue={formatNumber(previousTimeLeft.minutes)[1]} />
+          </div>
+          <div className="time-label">MINUTES</div>
+        </div>
         
         <div className="separator">:</div>
         
         {/* Seconds */}
-        <FlipDigit value={formatNumber(timeLeft.seconds)[0]} previousValue={formatNumber(previousTimeLeft.seconds)[0]} />
-        <FlipDigit value={formatNumber(timeLeft.seconds)[1]} previousValue={formatNumber(previousTimeLeft.seconds)[1]} />
+        <div className="time-group">
+          <div className="digit-group">
+            <FlipDigit value={formatNumber(timeLeft.seconds)[0]} previousValue={formatNumber(previousTimeLeft.seconds)[0]} />
+            <FlipDigit value={formatNumber(timeLeft.seconds)[1]} previousValue={formatNumber(previousTimeLeft.seconds)[1]} />
+          </div>
+          <div className="time-label">SECONDS</div>
+        </div>
       </div>
     </div>
   );
