@@ -3,12 +3,17 @@
   justify-content: center;
   align-items: center;
   margin: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .flip-clock-container {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
 }
 
 .flip-digit-container {
@@ -19,8 +24,8 @@
 
 .flip-digit {
   position: relative;
-  width: 100px;
-  height: 150px;
+  width: 80px;
+  height: 120px;
   perspective: 800px;
 }
 
@@ -108,7 +113,7 @@
 }
 
 .digit {
-  font-size: 60px;
+  font-size: 48px;
   font-weight: bold;
   color: #000;
   font-family: 'Courier New', monospace;
@@ -119,7 +124,7 @@
 }
 
 .separator {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: bold;
   color: #333;
   margin: 0 5px;
@@ -156,26 +161,26 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .flip-digit {
-    width: 80px;
-    height: 120px;
+    width: 70px;
+    height: 105px;
   }
   
   .digit {
-    font-size: 48px;
+    font-size: 42px;
   }
   
   .separator {
-    font-size: 36px;
+    font-size: 32px;
   }
   
   .flip-clock-container {
-    gap: 15px;
+    gap: 12px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .flip-digit {
     width: 60px;
     height: 90px;
@@ -187,5 +192,24 @@
   
   .separator {
     font-size: 28px;
+  }
+  
+  .flip-clock-container {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-digit {
+    width: 50px;
+    height: 75px;
+  }
+  
+  .digit {
+    font-size: 30px;
+  }
+  
+  .separator {
+    font-size: 24px;
   }
 } 
