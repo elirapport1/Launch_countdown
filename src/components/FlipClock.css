@@ -3,213 +3,212 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  max-width: 100%;
-  overflow: hidden;
 }
 
 .flip-clock-container {
   display: flex;
   align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 100%;
-}
-
-.flip-digit-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 10px;
 }
 
 .flip-digit {
   position: relative;
-  width: 80px;
-  height: 120px;
-  perspective: 800px;
+  width: 144px;
+  height: 216px;
+  background: #000;
+  border-radius: 12px;
+  box-shadow: 0 14px 29px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  border: 2px solid #333;
 }
 
-.flip-card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-/* Top half of the card - shows current number */
-.flip-card-front {
+/* Static bottom half - shows bottom portion of current digit */
+.flip-card-back-static {
   position: absolute;
+  bottom: 0;
   width: 100%;
   height: 50%;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
+  background: linear-gradient(to bottom, #1a1a1a, #000);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 100%);
-  border: 2px solid #333;
-  border-bottom: 1px solid #333;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.flip-card-back-static .digit {
+  transform: translateY(-50%);
+}
+
+/* Static top half - shows top portion of current digit */
+.flip-card-front-static {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.flip-card-front-static .digit {
+  transform: translateY(50%);
+}
+
+/* Flipping top half - shows top portion of current digit flipping down */
+.flip-card-front-animating {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   overflow: hidden;
   transform-origin: bottom;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: flipTop 0.3s ease-in-out forwards;
+  backface-visibility: hidden;
 }
 
-/* Bottom half of the card - shows next number */
-.flip-card-back {
+.flip-card-front-animating .digit {
+  transform: translateY(50%);
+}
+
+/* Revealing bottom half - shows bottom portion of next digit */
+.flip-card-back-animating {
   position: absolute;
+  bottom: 0;
   width: 100%;
   height: 50%;
-  bottom: 0;
-  left: 0;
-  backface-visibility: hidden;
+  background: linear-gradient(to bottom, #1a1a1a, #000);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  background: linear-gradient(145deg, #f0f0f0 0%, #e8e8e8 100%);
-  border: 2px solid #333;
-  border-top: 1px solid #333;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transform-origin: top;
+  animation: flipBottom 0.3s ease-in-out 0.15s forwards;
+  backface-visibility: hidden;
+  transform: rotateX(-90deg);
 }
 
-/* Horizontal split line */
-.flip-card-front::after,
-.flip-card-back::after {
-  content: '';
+.flip-card-back-animating .digit {
+  transform: translateY(-50%);
+}
+
+/* Center line */
+.center-line {
   position: absolute;
+  top: 50%;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #333 20%, #333 80%, transparent 100%);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: #666;
+  transform: translateY(-50%);
 }
 
-.flip-card-front::after {
-  bottom: 0;
+/* Corner dots */
+.corner-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #666;
+  border-radius: 50%;
 }
 
-.flip-card-back::after {
-  top: 0;
+.corner-dot.top-left {
+  top: 10px;
+  left: 10px;
 }
 
-/* Flip animation for the top half */
-.flip-card.flipping .flip-card-front {
-  transform: rotateX(-180deg);
+.corner-dot.top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.corner-dot.bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.corner-dot.bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
+/* Animations */
+@keyframes flipTop {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
+@keyframes flipBottom {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
 }
 
 .digit {
-  font-size: 48px;
+  font-size: 168px;
   font-weight: bold;
-  color: #000;
+  color: #fff;
   font-family: 'Courier New', monospace;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   line-height: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .separator {
-  font-size: 36px;
+  font-size: 72px;
   font-weight: bold;
   color: #333;
-  margin: 0 5px;
-  align-self: center;
+  margin: 0 3px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Enhanced shadow effect for more depth */
-.flip-digit::before {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 8px;
-  right: 8px;
-  height: 12px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  filter: blur(4px);
-  z-index: -1;
-}
-
-/* Additional depth shadow */
-.flip-digit::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 4px;
-  right: 4px;
-  height: 8px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  filter: blur(2px);
-  z-index: -1;
-}
-
 /* Responsive design */
-@media (max-width: 1200px) {
-  .flip-digit {
-    width: 70px;
-    height: 105px;
-  }
-  
-  .digit {
-    font-size: 42px;
-  }
-  
-  .separator {
-    font-size: 32px;
-  }
-  
-  .flip-clock-container {
-    gap: 12px;
-  }
-}
-
 @media (max-width: 768px) {
   .flip-digit {
-    width: 60px;
-    height: 90px;
+    width: 108px;
+    height: 162px;
   }
   
   .digit {
-    font-size: 36px;
+    font-size: 120px;
   }
   
   .separator {
-    font-size: 28px;
+    font-size: 54px;
   }
   
   .flip-clock-container {
-    gap: 10px;
+    gap: 8px;
   }
 }
 
 @media (max-width: 480px) {
   .flip-digit {
-    width: 50px;
-    height: 75px;
+    width: 84px;
+    height: 126px;
   }
   
   .digit {
-    font-size: 30px;
+    font-size: 96px;
   }
   
   .separator {
-    font-size: 24px;
+    font-size: 42px;
   }
 } 

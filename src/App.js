@@ -43,7 +43,6 @@ function App() {
         <div className="countdown-section">
           <h1>Launch Countdown</h1>
           <FlipClock timeLeft={timeLeft} previousTimeLeft={previousTimeLeft} />
-          <p className="launch-date">Launch Date: July 28, 2025 at 1:00 PM PST</p>
         </div>
       </div>
     </div>
