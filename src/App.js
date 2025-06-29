@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import FlipClock from './components/FlipClock';
-import cornerImage from './assets/1024_1024.png';
 
 // Target date: July 28, 2025 at 1:00 PM PST
 // Convert to UTC (PST is UTC-8, but PDT is UTC-7 during summer)
@@ -36,9 +35,6 @@ function App() {
 
   return (
     <div className="App">
-      <div className="corner-image">
-        <img src={cornerImage} alt="Corner" />
-      </div>
       <div className="dashboard-container">
         <div className="countdown-section">
           <h1>Launch Countdown</h1>
