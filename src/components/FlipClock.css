@@ -11,7 +11,7 @@
 
 .flip-clock-container {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.3vw;
   max-width: 100%;
   flex-wrap: nowrap;
@@ -31,9 +31,9 @@
 
 .time-label {
   font-size: 1.8vw;
-  font-weight: bold;
+  font-weight: 700;
   color: #fff;
-  font-family: 'Courier New', monospace;
+  font-family: 'Roboto Condensed', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1vw;
   text-shadow: 0.1vw 0.1vw 0.2vw rgba(0, 0, 0, 0.3);
@@ -203,9 +203,9 @@
 
 .digit {
   font-size: 11vw;
-  font-weight: bold;
+  font-weight: 700;
   color: #fff;
-  font-family: 'Courier New', monospace;
+  font-family: 'Roboto Condensed', sans-serif;
   text-shadow: 0.15vw 0.15vw 0.3vw rgba(0, 0, 0, 0.5);
   line-height: 1;
   width: 100%;
@@ -218,11 +218,12 @@
 .separator {
   font-size: 4.5vw;
   font-weight: bold;
-  color: #333;
+  color: #fff;
   margin: 0;
   text-shadow: 0.1vw 0.1vw 0.2vw rgba(0, 0, 0, 0.1);
-  align-self: flex-end;
-  margin-bottom: 1.5vw;
+  align-self: center;
+  margin-bottom: 0;
+  transform: translateY(-2vw);
 }
 
 /* Responsive design for smaller screens */
