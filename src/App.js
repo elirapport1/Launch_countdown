@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import FlipClock from './components/FlipClock';
 
-// Target date: August 6, 2025 at 8:00 AM PST
+// Target date: August 8, 2025 at 12:00 AM PST (midnight)
 // Convert to UTC (PST is UTC-8, but PDT is UTC-7 during summer)
-// August 6, 2025 is during PDT, so 8:00 AM PDT = 3:00 PM UTC
-const TARGET_TIME = new Date("2025-08-06T15:00:00Z").getTime();
+// August 8, 2025 is during PDT, so 12:00 AM PDT = 7:00 AM UTC on August 9th
+const TARGET_TIME = new Date("2025-08-09T07:00:00Z").getTime();
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
